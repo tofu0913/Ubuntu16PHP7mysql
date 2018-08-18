@@ -7,6 +7,9 @@ RUN apt-get -y install php7.0 libapache2-mod-php7.0 mcrypt php7.0-mcrypt php-mbs
 #RUN source ~/.bashrc
 RUN apt-get install -y locales
 RUN locale-gen en_US.UTF-8
+RUN a2enmod ssl
+ADD default-ssl.conf /etc/apache2/sites-available/
+RUN a2ensite default-ssl.conf
 
 EXPOSE 80
 
